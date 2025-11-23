@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Wow Travel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Travel Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Explore Destinations</h1>
+            <p class="page-subtitle">Discover amazing places around the world</p>
+        </div>
+    </section>
+    
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-card">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label">Continent</label>
+                        <select class="form-select" id="continentFilter">
+                            <option value="">All Continents</option>
+                            <option value="asia">Asia</option>
+                            <option value="europe">Europe</option>
+                            <option value="america">Americas</option>
+                            <option value="africa">Africa</option>
+                            <option value="oceania">Oceania</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Price Range</label>
+                        <select class="form-select" id="priceFilter">
+                            <option value="">All Prices</option>
+                            <option value="budget">Budget (Under $1000)</option>
+                            <option value="moderate">Moderate ($1000-$2000)</option>
+                            <option value="luxury">Luxury ($2000+)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Sort By</label>
+                        <select class="form-select" id="sortFilter">
+                            <option value="popularity">Popularity</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name A-Z</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary w-100">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="destinations-grid-section mb-5">
+        <div class="container">
+            <div class="row g-4" id="destinationsGrid">
+                <div class="col-md-6 col-lg-4" data-continent="asia" data-price="1299">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Bali">
+                            <div class="destination-badge">Popular</div>
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Bali">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Bali</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Indonesia, Asia</p>
+                            <p class="destination-description">Tropical paradise with stunning beaches, ancient temples, and vibrant culture</p>
+                            <p class="destination-price">Starting from <span>$1,299</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-continent="asia" data-price="1899">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Tokyo">
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Tokyo">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Tokyo</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Japan, Asia</p>
+                            <p class="destination-description">Ultra-modern metropolis blending tradition with cutting-edge technology</p>
+                            <p class="destination-price">Starting from <span>$1,899</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-continent="asia" data-price="2499">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Maldives">
+                            <div class="destination-badge">Luxury</div>
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Maldives">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Maldives</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Indian Ocean, Asia</p>
+                            <p class="destination-description">Luxury overwater villas, pristine beaches, and world-class diving</p>
+                            <p class="destination-price">Starting from <span>$2,499</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-continent="europe" data-price="1799">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Paris">
+                            <div class="destination-badge">Popular</div>
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Paris">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Paris</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>France, Europe</p>
+                            <p class="destination-description">City of lights, romance, art, fashion, and exquisite cuisine</p>
+                            <p class="destination-price">Starting from <span>$1,799</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-continent="europe" data-price="1599">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Santorini">
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Santorini">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Santorini</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Greece, Europe</p>
+                            <p class="destination-description">Iconic white-washed buildings, stunning sunsets, and crystal waters</p>
+                            <p class="destination-price">Starting from <span>$1,599</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-continent="europe" data-price="2199">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Swiss Alps">
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Swiss Alps">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Swiss Alps</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Switzerland, Europe</p>
+                            <p class="destination-description">Majestic mountains, world-class skiing, and charming alpine villages</p>
+                            <p class="destination-price">Starting from <span>$2,199</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-continent="america" data-price="1899">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="New York">
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="New York">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">New York</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>USA, Americas</p>
+                            <p class="destination-description">The city that never sleeps with iconic landmarks and vibrant culture</p>
+                            <p class="destination-price">Starting from <span>$1,899</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-continent="america" data-price="1699">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Cancun">
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Cancun">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Cancun</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Mexico, Americas</p>
+                            <p class="destination-description">Caribbean paradise with white sand beaches and Mayan ruins</p>
+                            <p class="destination-price">Starting from <span>$1,699</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-continent="asia" data-price="1999">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg" alt="Dubai">
+                            <div class="destination-badge">Luxury</div>
+                            <div class="destination-overlay">
+                                <a href="#" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#destinationModal" data-destination="Dubai">View Details</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Dubai</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>UAE, Middle East</p>
+                            <p class="destination-description">Ultra-luxury destination with iconic architecture and desert adventures</p>
+                            <p class="destination-price">Starting from <span>$1,999</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="modal fade" id="destinationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDestinationTitle">Destination Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/images/placeholder.svg?height=400&width=600" class="img-fluid rounded mb-3" id="modalDestinationImage">
+                    <h3 id="modalDestinationName">Destination Name</h3>
+                    <p class="text-muted" id="modalDestinationLocation"><i class="bi bi-geo-alt me-2"></i>Location</p>
+                    <p id="modalDestinationDescription">Detailed description of the destination...</p>
+                    <h5 class="mt-4">Highlights:</h5>
+                    <ul id="modalDestinationHighlights">
+                        <li>Amazing beaches and crystal-clear waters</li>
+                        <li>Rich cultural heritage and historical sites</li>
+                        <li>Delicious local cuisine</li>
+                        <li>Adventure activities and water sports</li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <h4 class="mb-0">Starting from <span class="text-primary">$1,299</span></h4>
+                            <small class="text-muted">per person</small>
+                        </div>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">
+                        <i class="bi bi-airplane-fill me-2"></i>
+                        Wow Travel
+                    </h3>
+                    <p class="footer-text">Your gateway to extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="blog.html">Travel Guides</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="booking.html">Flight Booking</a></li>
+                        <li><a href="booking.html">Hotel Booking</a></li>
+                        <li><a href="booking.html">Car Rental</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-envelope me-2"></i>info@wowtravel.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>123 Travel Street, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

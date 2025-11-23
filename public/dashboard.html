@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Wow Travel</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-airplane-fill me-2"></i>
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <span id="navbarUserName">Account</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Welcome Header -->
+            <div class="dashboard-header animate-on-scroll">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="dashboard-title">Welcome back, <span id="userName">Traveler</span>!</h1>
+                        <p class="dashboard-subtitle">Manage your bookings and explore new destinations</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <a href="booking.html" class="btn btn-primary">
+                            <i class="bi bi-plus-circle me-2"></i>New Booking
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">
+                            <i class="bi bi-bookmark-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="totalBookings">0</h3>
+                            <p class="stat-label">Total Bookings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="pendingBookings">0</h3>
+                            <p class="stat-label">Pending</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="confirmedBookings">0</h3>
+                            <p class="stat-label">Confirmed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="destinationsVisited">0</h3>
+                            <p class="stat-label">Destinations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="row g-4">
+                <!-- Bookings List -->
+                <div class="col-lg-8">
+                    <div class="dashboard-card animate-on-scroll">
+                        <div class="card-header-dash">
+                            <h2 class="card-title-dash">Recent Bookings</h2>
+                            <a href="#" class="view-all-link">View All</a>
+                        </div>
+                        <div class="card-body-dash">
+                            <div id="bookingsContainer">
+                                <!-- Bookings will be loaded here -->
+                                <div class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="text-muted mt-3">Loading bookings...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Profile -->
+                <div class="col-lg-4">
+                    <!-- Profile Card -->
+                    <div class="dashboard-card animate-on-scroll mb-4">
+                        <div class="card-header-dash">
+                            <h2 class="card-title-dash">Profile</h2>
+                        </div>
+                        <div class="card-body-dash">
+                            <div class="profile-info text-center">
+                                <div class="profile-avatar mb-3">
+                                    <i class="bi bi-person-circle"></i>
+                                </div>
+                                <h4 class="profile-name" id="profileName">Loading...</h4>
+                                <p class="profile-email" id="profileEmail">Loading...</p>
+                                <a href="settings.html" class="btn btn-outline-primary btn-sm w-100 mt-3">
+                                    <i class="bi bi-pencil me-2"></i>Edit Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card animate-on-scroll">
+                        <div class="card-header-dash">
+                            <h2 class="card-title-dash">Quick Actions</h2>
+                        </div>
+                        <div class="card-body-dash">
+                            <div class="quick-actions">
+                                <a href="packages.html" class="quick-action-btn">
+                                    <i class="bi bi-box-seam"></i>
+                                    <span>Browse Packages</span>
+                                </a>
+                                <a href="destinations.html" class="quick-action-btn">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Destinations</span>
+                                </a>
+                                <a href="booking.html" class="quick-action-btn">
+                                    <i class="bi bi-calendar-plus"></i>
+                                    <span>New Booking</span>
+                                </a>
+                                <a href="contact.html" class="quick-action-btn">
+                                    <i class="bi bi-headset"></i>
+                                    <span>Support</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Trips -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="dashboard-card animate-on-scroll">
+                        <div class="card-header-dash">
+                            <h2 class="card-title-dash">Upcoming Trips</h2>
+                        </div>
+                        <div class="card-body-dash">
+                            <div id="upcomingTripsContainer">
+                                <div class="empty-state text-center py-5">
+                                    <i class="bi bi-calendar-x empty-icon"></i>
+                                    <h4 class="empty-title">No Upcoming Trips</h4>
+                                    <p class="empty-text">Start planning your next adventure!</p>
+                                    <a href="packages.html" class="btn btn-primary mt-3">Browse Packages</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

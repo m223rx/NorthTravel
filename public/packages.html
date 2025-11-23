@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages - Wow Travel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Travel Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Travel Packages</h1>
+            <p class="page-subtitle">Curated experiences for every type of traveler</p>
+        </div>
+    </section>
+    
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-card">
+                <div class="package-type-filters">
+                    <button class="btn btn-filter active" data-filter="all">All Packages</button>
+                    <button class="btn btn-filter" data-filter="adventure">
+                        <i class="bi bi-mountains me-2"></i>Adventure
+                    </button>
+                    <button class="btn btn-filter" data-filter="relaxation">
+                        <i class="bi bi-sun me-2"></i>Relaxation
+                    </button>
+                    <button class="btn btn-filter" data-filter="family">
+                        <i class="bi bi-people me-2"></i>Family
+                    </button>
+                    <button class="btn btn-filter" data-filter="luxury">
+                        <i class="bi bi-gem me-2"></i>Luxury
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="packages-section">
+        <div class="container">
+            <div class="row g-4" id="packagesGrid">
+                <div class="col-lg-4 col-md-6" data-category="adventure">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Alpine Adventure">
+                            <div class="package-badge adventure">Adventure</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Swiss Alps Adventure</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Switzerland</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>7 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2-8 People</span>
+                            </div>
+                            <p class="package-description">Experience thrilling mountain activities including skiing, hiking, and paragliding</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Professional ski lessons</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Mountain hiking trails</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Luxury alpine lodge</li>
+                                <li><i class="bi bi-check-circle me-2"></i>All equipment included</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$2,599</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="relaxation">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Maldives Escape">
+                            <div class="package-badge relaxation">Relaxation</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Maldives Spa Retreat</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Maldives</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>5 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2 People</span>
+                            </div>
+                            <p class="package-description">Unwind in paradise with luxury spa treatments and pristine beaches</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Overwater villa accommodation</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Daily spa treatments</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Private beach access</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Gourmet dining included</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$3,299</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="family">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Orlando Adventure">
+                            <div class="package-badge family">Family</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Orlando Family Magic</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Florida, USA</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>6 Days</span>
+                                <span><i class="bi bi-people me-1"></i>4-6 People</span>
+                            </div>
+                            <p class="package-description">Perfect family vacation with theme parks and entertainment for all ages</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Theme park tickets included</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Family-friendly hotel</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Character dining experiences</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Transportation included</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$1,899</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="luxury">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Dubai Luxury">
+                            <div class="package-badge luxury">Luxury</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Dubai Luxury Experience</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>United Arab Emirates</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>5 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2 People</span>
+                            </div>
+                            <p class="package-description">Indulge in ultra-luxury with 5-star hotels, fine dining, and exclusive experiences</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>7-star hotel accommodation</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Private desert safari</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Helicopter city tour</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Michelin-star dining</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$4,999</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="adventure">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="NZ Adventure">
+                            <div class="package-badge adventure">Adventure</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">New Zealand Thrill</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>New Zealand</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>10 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2-6 People</span>
+                            </div>
+                            <p class="package-description">Epic adventure with bungee jumping, skydiving, and stunning landscapes</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Bungee jumping experience</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Milford Sound cruise</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Glacier hiking</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Adventure activities included</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$3,499</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="relaxation">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Bali Wellness">
+                            <div class="package-badge relaxation">Relaxation</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Bali Wellness Escape</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Indonesia</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>7 Days</span>
+                                <span><i class="bi bi-people me-1"></i>1-4 People</span>
+                            </div>
+                            <p class="package-description">Rejuvenate with daily yoga, meditation, and holistic wellness treatments</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Daily yoga sessions</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Meditation workshops</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Organic meal plan</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Spa treatments included</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$1,799</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="family">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Costa Rica Family">
+                            <div class="package-badge family">Family</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Costa Rica Family Safari</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Costa Rica</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>8 Days</span>
+                                <span><i class="bi bi-people me-1"></i>4-8 People</span>
+                            </div>
+                            <p class="package-description">Explore rainforests, wildlife, beaches perfect for family adventures</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Rainforest tours</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Wildlife encounters</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Beach activities</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Kid-friendly guides</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$2,199</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="luxury">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="French Riviera">
+                            <div class="package-badge luxury">Luxury</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">French Riviera Yacht</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>France</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>7 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2-6 People</span>
+                            </div>
+                            <p class="package-description">Sail the Mediterranean in style with private yacht and exclusive ports</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Private yacht charter</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Gourmet chef on board</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Monaco & Cannes visits</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Exclusive beach clubs</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$8,999</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-category="adventure">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="assets/images/placeholder.svg" alt="Iceland">
+                            <div class="package-badge adventure">Adventure</div>
+                        </div>
+                        <div class="package-content">
+                            <h3 class="package-title">Iceland Northern Lights</h3>
+                            <p class="package-location"><i class="bi bi-geo-alt me-2"></i>Iceland</p>
+                            <div class="package-meta">
+                                <span><i class="bi bi-calendar3 me-1"></i>6 Days</span>
+                                <span><i class="bi bi-people me-1"></i>2-10 People</span>
+                            </div>
+                            <p class="package-description">Chase the Northern Lights and explore Iceland's dramatic landscapes</p>
+                            <ul class="package-highlights">
+                                <li><i class="bi bi-check-circle me-2"></i>Northern Lights tours</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Golden Circle excursion</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Blue Lagoon spa</li>
+                                <li><i class="bi bi-check-circle me-2"></i>Glacier walks</li>
+                            </ul>
+                            <div class="package-footer">
+                                <div class="package-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-amount">$2,899</span>
+                                    <span class="price-unit">per person</span>
+                                </div>
+                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">
+                        <i class="bi bi-airplane-fill me-2"></i>
+                        Wow Travel
+                    </h3>
+                    <p class="footer-text">Your gateway to extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="blog.html">Travel Guides</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="booking.html">Flight Booking</a></li>
+                        <li><a href="booking.html">Hotel Booking</a></li>
+                        <li><a href="booking.html">Car Rental</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-envelope me-2"></i>info@wowtravel.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>123 Travel Street, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/packages.js"></script>
+</body>
+</html>

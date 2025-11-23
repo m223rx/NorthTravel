@@ -1,0 +1,86 @@
+<?php
+require_once 'config.php';
+
+// Get bearer token
+$token = getBearerToken();
+
+if (!$token) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'No token provided'
+    ]);
+    exit();
+}
+
+// Verify token
+$payload = verifyJWT($token);
+
+if (!$payload) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid or expired token'
+    ]);
+    exit();
+}
+
+// Get JSON input
+$input = json_decode(file_get_contents('php://input'), true);
+
+if (!isset($input['currentPassword']) || !isset($input['newPassword'])) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Current password and new password are required'
+    ]);
+    exit();
+}
+
+$currentPassword = $input['currentPassword'];
+$newPassword = $input['newPassword'];
+
+// Validate new password length
+if (strlen($newPassword) < 6) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'New password must be at least 6 characters'
+    ]);
+    exit();
+}
+
+// Get current password from database
+$stmt = $conn->prepare("SELECT password FROM users WHERE id = ?");
+$stmt->bind_param("i", $payload['user_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+// Verify current password
+if (!password_verify($currentPassword, $user['password'])) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Current password is incorrect'
+    ]);
+    exit();
+}
+
+// Hash new password
+$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+// Update password
+$stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+$stmt->bind_param("si", $hashedPassword, $payload['user_id']);
+
+if ($stmt->execute()) {
+    echo json_encode([
+        'success' => true,
+        'message' => 'Password changed successfully'
+    ]);
+} else {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Failed to change password'
+    ]);
+}
+
+$stmt->close();
+$conn->close();
+?>

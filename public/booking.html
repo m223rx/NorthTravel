@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now - Wow Travel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Travel Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Book Your Journey</h1>
+            <p class="page-subtitle">Complete your booking in just a few simple steps</p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="booking-form-container gap-5 d-flex flex-column">
+                        <div class="booking-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-number">1</div>
+                                <div class="step-label">Select Service</div>
+                            </div>
+                            <div class="step" data-step="2">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Travel Details</div>
+                            </div>
+                            <div class="step" data-step="3">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Passenger Info</div>
+                            </div>
+                            <div class="step" data-step="4">
+                                <div class="step-number">4</div>
+                                <div class="step-label">Payment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step-content active" id="step1">
+                            <h3 class="step-title">Select Your Service</h3>
+                            <div class="row g-2 mb-4 mt-4">
+                                <div class="col-md-6 step-content">
+                                    <div class="service-option">
+                                        <input type="radio" name="serviceType" id="flight" value="flight" checked>
+                                        <label for="flight">
+                                            <i class="bi bi-airplane"></i>
+                                            <span>Flight Booking</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 step-content">
+                                    <div class="service-option">
+                                        <input type="radio" name="serviceType" id="hotel" value="hotel">
+                                        <label for="hotel">
+                                            <i class="bi bi-building"></i>
+                                            <span>Hotel Booking</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 step-content">
+                                    <div class="service-option">
+                                        <input type="radio" name="serviceType" id="car" value="car">
+                                        <label for="car">
+                                            <i class="bi bi-car-front"></i>
+                                            <span>Car Rental</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 step-content">
+                                    <div class="service-option">
+                                        <input type="radio" name="serviceType" id="package" value="package">
+                                        <label for="package">
+                                            <i class="bi bi-box-seam"></i>
+                                            <span>Travel Package</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-navigation">
+                                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Continue</button>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step-content" id="step2">
+                            <h3 class="step-title">Travel Details</h3>
+                            <form id="travelDetailsForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">From</label>
+                                        <input type="text" class="form-control" placeholder="Departure city" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">To</label>
+                                        <input type="text" class="form-control" placeholder="Destination city" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Departure Date</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Return Date</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Adults</label>
+                                        <select class="form-select" required>
+                                            <option value="1">1 Adult</option>
+                                            <option value="2">2 Adults</option>
+                                            <option value="3">3 Adults</option>
+                                            <option value="4">4 Adults</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Children</label>
+                                        <select class="form-select">
+                                            <option value="0">0 Children</option>
+                                            <option value="1">1 Child</option>
+                                            <option value="2">2 Children</option>
+                                            <option value="3">3 Children</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Class</label>
+                                        <select class="form-select" required>
+                                            <option>Economy</option>
+                                            <option>Premium Economy</option>
+                                            <option>Business</option>
+                                            <option>First Class</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="step-navigation mt-4">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continue</button>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step-content" id="step3">
+                            <h3 class="step-title">Passenger Information</h3>
+                            <form id="passengerForm">
+                                <h5 class="mb-3">Primary Passenger</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-2">
+                                        <label class="form-label">Title</label>
+                                        <select class="form-select" required>
+                                            <option>Mr.</option>
+                                            <option>Mrs.</option>
+                                            <option>Ms.</option>
+                                            <option>Dr.</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Passport Number</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Special Requirements</label>
+                                        <textarea class="form-control" rows="3" placeholder="Dietary restrictions, wheelchair access, etc."></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="step-navigation mt-4">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Back</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continue</button>
+                            </div>
+                        </div>
+                        
+                        <div class="booking-step-content" id="step4">
+                            <h3 class="step-title">Payment Information</h3>
+                            <div class="payment-methods mb-4 row g-3">
+                                <div class="payment-method active col-12 col-md-4">
+                                    <input type="radio" name="paymentMethod" id="creditCard" checked>
+                                    <label for="creditCard">
+                                        <i class="bi bi-credit-card"></i>
+                                        <span>Credit/Debit Card</span>
+                                    </label>
+                                </div>
+                                <div class="payment-method col-12 col-md-4">
+                                    <input type="radio" name="paymentMethod" id="paypal">
+                                    <label for="paypal">
+                                        <i class="bi bi-paypal"></i>
+                                        <span>PayPal</span>
+                                    </label>
+                                </div>
+                                <div class="payment-method col-12 col-md-4">
+                                    <input type="radio" name="paymentMethod" id="wallet">
+                                    <label for="wallet">
+                                        <i class="bi bi-wallet2"></i>
+                                        <span>Digital Wallet</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Card Payment Form -->
+                            <form id="paymentForm">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label">Card Number</label>
+                                        <input type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-label">Cardholder Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">CVV</label>
+                                        <input type="text" class="form-control" placeholder="123" maxlength="4" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Expiry Month</label>
+                                        <select class="form-select" required>
+                                            <option value="">Select Month</option>
+                                            <option value="01">01 - January</option>
+                                            <option value="02">02 - February</option>
+                                            <option value="03">03 - March</option>
+                                            <option value="04">04 - April</option>
+                                            <option value="05">05 - May</option>
+                                            <option value="06">06 - June</option>
+                                            <option value="07">07 - July</option>
+                                            <option value="08">08 - August</option>
+                                            <option value="09">09 - September</option>
+                                            <option value="10">10 - October</option>
+                                            <option value="11">11 - November</option>
+                                            <option value="12">12 - December</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Expiry Year</label>
+                                        <select class="form-select" required>
+                                            <option value="">Select Year</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2030">2030</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="terms" required>
+                                            <label class="form-check-label" for="terms">
+                                                I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="step-navigation">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Back</button>
+                                <button type="button" class="btn btn-success" onclick="completeBooking()">
+                                    <i class="bi bi-lock me-2"></i>Complete Booking
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Summary -->
+                <div class="col-lg-4">
+                    <div class="booking-summary">
+                        <h4 class="summary-title">Booking Summary</h4>
+                        <div class="summary-item">
+                            <img src="/placeholder.svg?height=150&width=300" alt="Destination" class="summary-image">
+                        </div>
+                        <div class="summary-item">
+                            <h5>Selected Service</h5>
+                            <p id="selectedService">Flight Booking</p>
+                        </div>
+                        <div class="summary-item">
+                            <h5>Route</h5>
+                            <p id="routeInfo">New York → Paris</p>
+                        </div>
+                        <div class="summary-item">
+                            <h5>Travel Dates</h5>
+                            <p id="travelDates">Jan 15, 2025 - Jan 25, 2025</p>
+                        </div>
+                        <div class="summary-item">
+                            <h5>Passengers</h5>
+                            <p id="passengerCount">2 Adults, 0 Children</p>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Base Fare</span>
+                                <span>$1,499</span>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Taxes & Fees</span>
+                                <span>$299</span>
+                            </div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="d-flex justify-content-between">
+                                <span>Travel Insurance</span>
+                                <span>$99</span>
+                            </div>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-total">
+                            <div class="d-flex justify-content-between">
+                                <h5>Total Amount</h5>
+                                <h5 class="text-primary">$1,897</h5>
+                            </div>
+                        </div>
+                        <div class="summary-note">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <small>Final price includes all taxes and fees</small>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="bi bi-clock-history"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="bi bi-arrow-repeat"></i>
+                            <span>Easy Cancellation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">
+                        <i class="bi bi-airplane-fill me-2"></i>
+                        Wow Travel
+                    </h3>
+                    <p class="footer-text">Your gateway to extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="blog.html">Travel Guides</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="booking.html">Flight Booking</a></li>
+                        <li><a href="booking.html">Hotel Booking</a></li>
+                        <li><a href="booking.html">Car Rental</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-envelope me-2"></i>info@wowtravel.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>123 Travel Street, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

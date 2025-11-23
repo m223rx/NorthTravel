@@ -4,25 +4,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wow Travel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Wow Travel - Discover Your Next Adventure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="theme-light">
-    <div id="navbar-container"></div>
-    <div id="hero-container"></div>
-    <div class="container mt-5 pt-5">
-        <h1>Welcome to Wow Travel</h1>
-        <p>Your content goes here.</p>
-    </div>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Travel Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="./js/load-components.js"></script>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title animate-fade-in">Discover Your Next Adventure</h1>
+                <p class="hero-subtitle animate-fade-in-delay">Explore the world's most breathtaking destinations with
+                    exclusive travel packages</p>
+                    
+                <div class="search-card animate-slide-up">
+                    <ul class="nav nav-pills search-tabs" id="searchTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="flights-tab" data-bs-toggle="pill"
+                                data-bs-target="#flights">
+                                <i class="bi bi-airplane me-2"></i>Flights
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="hotels-tab" data-bs-toggle="pill" data-bs-target="#hotels">
+                                <i class="bi bi-building me-2"></i>Hotels
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="packages-tab" data-bs-toggle="pill" data-bs-target="#packages">
+                                <i class="bi bi-box-seam me-2"></i>Packages
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="searchTabContent">
+                        <div class="tab-pane fade show active" id="flights">
+                            <form class="search-form">
+                                <div class="row g-3">
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" placeholder="From">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" placeholder="To">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" placeholder="Departure">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" placeholder="Return">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="hotels">
+                            <form class="search-form">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Destination">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control" placeholder="Check-in">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="date" class="form-control" placeholder="Check-out">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="packages">
+                            <form class="search-form">
+                                <div class="row g-3">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" placeholder="Where do you want to go?">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-select">
+                                            <option>Package Type</option>
+                                            <option>Adventure</option>
+                                            <option>Relaxation</option>
+                                            <option>Family</option>
+                                            <option>Luxury</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control" placeholder="Date">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Why Choose Wow Travel</h2>
+                <p class="section-subtitle">Premium services designed for exceptional travel experiences</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-airplane-engines"></i>
+                        </div>
+                        <h3 class="service-title">Flight Booking</h3>
+                        <p class="service-text">Book flights to destinations worldwide with the best prices</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h3 class="service-title">Hotel Booking</h3>
+                        <p class="service-text">Luxury to budget accommodations curated for you</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-car-front"></i>
+                        </div>
+                        <h3 class="service-title">Car Rental</h3>
+                        <p class="service-text">Flexible car rental options at competitive rates</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="service-title">Travel Insurance</h3>
+                        <p class="service-text">Comprehensive coverage for peace of mind</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3 class="service-title">24/7 Support</h3>
+                        <p class="service-text">Round-the-clock assistance whenever you need</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+                        <h3 class="service-title">Secure Payment</h3>
+                        <p class="service-text">Safe and encrypted payment processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="destinations-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Popular Destinations</h2>
+                <p class="section-subtitle">Explore the world's most sought-after travel locations</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Maldives">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Maldives</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Indian Ocean</p>
+                            <p class="destination-price">Starting from <span>$2,499</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Paris">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Paris</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>France</p>
+                            <p class="destination-price">Starting from <span>$1,799</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Dubai">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Dubai</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>United Arab Emirates</p>
+                            <p class="destination-price">Starting from <span>$1,999</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Bali">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Bali</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Indonesia</p>
+                            <p class="destination-price">Starting from <span>$1,299</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Santorini">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Santorini</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Greece</p>
+                            <p class="destination-price">Starting from <span>$1,599</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="assets/images/placeholder.svg?height=400&width=600" alt="Tokyo">
+                            <div class="destination-overlay">
+                                <a href="destinations.html" class="btn btn-light">Explore More</a>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Tokyo</h3>
+                            <p class="destination-location"><i class="bi bi-geo-alt me-2"></i>Japan</p>
+                            <p class="destination-price">Starting from <span>$1,899</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">What Our Travelers Say</h2>
+                <p class="section-subtitle">Real experiences from real travelers</p>
+            </div>
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">"Wow Travel made our honeymoon in Maldives absolutely
+                                        unforgettable. Every detail was perfectly planned, from the luxurious resort to
+                                        the seamless transfers. The 24/7 support gave us peace of mind throughout our
+                                        journey."</p>
+                                    <div class="testimonial-author">
+                                        <img src="assets/images/placeholder.svg" alt="Sarah Johnson">
+                                        <div class="author-info">
+                                            <h4>Sarah Johnson</h4>
+                                            <p>Honeymooner, Maldives</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">"Best travel experience ever! The adventure package to
+                                        Swiss Alps was beyond our expectations. Professional guides, stunning locations,
+                                        and excellent accommodations. Highly recommend Wow Travel for adventure
+                                        seekers!"</p>
+                                    <div class="testimonial-author">
+                                        <img src="assets/images/placeholder.svg" alt="Michael Chen">
+                                        <div class="author-info">
+                                            <h4>Michael Chen</h4>
+                                            <p>Adventure Traveler, Swiss Alps</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">"Traveling with kids is challenging, but Wow Travel made
+                                        our family vacation to Bali stress-free. Kid-friendly activities, comfortable
+                                        accommodations, and flexible itinerary. We're already planning our next trip
+                                        with them!"</p>
+                                    <div class="testimonial-author">
+                                        <img src="assets/images/placeholder.svg" alt="Emily Rodriguez">
+                                        <div class="author-info">
+                                            <h4>Emily Rodriguez</h4>
+                                            <p>Family Traveler, Bali</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel"
+                    data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="footer-brand">
+                        <i class="bi bi-airplane-fill me-2"></i>
+                        Wow Travel
+                    </h3>
+                    <p class="footer-text">Your gateway to extraordinary adventures around the world. We create
+                        unforgettable travel experiences tailored to your dreams.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="blog.html">Travel Guides</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="booking.html">Flight Booking</a></li>
+                        <li><a href="booking.html">Hotel Booking</a></li>
+                        <li><a href="booking.html">Car Rental</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li><i class="bi bi-envelope me-2"></i>info@wowtravel.com</li>
+                        <li><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>123 Travel Street, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/main.js"></script>
 </body>
 
 </html>
