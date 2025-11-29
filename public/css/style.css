@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -836,7 +837,7 @@ body {
 
 .social-link:hover {
   background: var(--primary-color);
-  color: var(--dark-bg);
+  color: var(--text-light);
   transform: translateY(-5px);
   border-color: var(--primary-color);
 }
@@ -1800,11 +1801,103 @@ body {
   width: 100%;
 }
 
-.page-item.active{
+.page-item.active {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color);
 }
 
-.page-item a{
+.page-item a {
   color: var(--accent-color);
+}
+
+.mission-icon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--text-light);
+  font-size: 2.5rem;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--primary-color);
+  border-radius: 50%;
+  width: 15rem;
+  height: 15rem;
+}
+
+.stat-item h3 {
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.stat-item p {
+  font-size: 1.2rem;
+  color: #f2f2f2;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.team-social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-social a {
+  text-decoration: none;
+  background: var(--primary-color);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.team-social a i {
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  object-fit: cover;
+}
+
+#contactForm input::placeholder {
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+#contactForm textarea::placeholder {
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+#contactForm button {
+  color: var(--text-light);
+}
+
+.contact-icon{
+  color: var(--primary-color);
 }

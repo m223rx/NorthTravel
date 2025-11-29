@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php';
 
-// Get bearer token
 $token = getBearerToken();
 
 if (!$token) {
@@ -12,7 +11,6 @@ if (!$token) {
     exit();
 }
 
-// Verify token
 $payload = verifyJWT($token);
 
 if (!$payload) {
@@ -23,7 +21,6 @@ if (!$payload) {
     exit();
 }
 
-// Get JSON input
 $input = json_decode(file_get_contents('php://input'), true);
 
 $name = isset($input['name']) ? trim($input['name']) : null;
@@ -32,7 +29,6 @@ $address = isset($input['address']) ? trim($input['address']) : null;
 $city = isset($input['city']) ? trim($input['city']) : null;
 $country = isset($input['country']) ? trim($input['country']) : null;
 
-// Update user profile
 $stmt = $conn->prepare("UPDATE users SET name = ?, phone = ?, address = ?, city = ?, country = ? WHERE id = ?");
 $stmt->bind_param("sssssi", $name, $phone, $address, $city, $country, $payload['user_id']);
 

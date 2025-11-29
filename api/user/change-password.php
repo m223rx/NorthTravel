@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php';
 
-// Get bearer token
 $token = getBearerToken();
 
 if (!$token) {
@@ -12,7 +11,6 @@ if (!$token) {
     exit();
 }
 
-// Verify token
 $payload = verifyJWT($token);
 
 if (!$payload) {
@@ -23,7 +21,6 @@ if (!$payload) {
     exit();
 }
 
-// Get JSON input
 $input = json_decode(file_get_contents('php://input'), true);
 
 if (!isset($input['currentPassword']) || !isset($input['newPassword'])) {
@@ -37,7 +34,6 @@ if (!isset($input['currentPassword']) || !isset($input['newPassword'])) {
 $currentPassword = $input['currentPassword'];
 $newPassword = $input['newPassword'];
 
-// Validate new password length
 if (strlen($newPassword) < 6) {
     echo json_encode([
         'success' => false,
@@ -46,14 +42,12 @@ if (strlen($newPassword) < 6) {
     exit();
 }
 
-// Get current password from database
 $stmt = $conn->prepare("SELECT password FROM users WHERE id = ?");
 $stmt->bind_param("i", $payload['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-// Verify current password
 if (!password_verify($currentPassword, $user['password'])) {
     echo json_encode([
         'success' => false,
@@ -62,10 +56,8 @@ if (!password_verify($currentPassword, $user['password'])) {
     exit();
 }
 
-// Hash new password
 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-// Update password
 $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
 $stmt->bind_param("si", $hashedPassword, $payload['user_id']);
 

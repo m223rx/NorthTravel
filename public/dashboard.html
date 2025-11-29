@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Wow Travel</title>
     
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="bi bi-airplane-fill me-2"></i>
                 <span class="brand-text">Wow Travel</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -44,11 +39,9 @@
             </div>
         </div>
     </nav>
-
-    <!-- Dashboard Section -->
+    
     <section class="dashboard-section">
         <div class="container">
-            <!-- Welcome Header -->
             <div class="dashboard-header animate-on-scroll">
                 <div class="row align-items-center">
                     <div class="col-md-8">
@@ -62,8 +55,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Stats Cards -->
+            
             <div class="row g-4 mb-5">
                 <div class="col-md-3 col-sm-6">
                     <div class="stat-card animate-on-scroll">
@@ -110,10 +102,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Main Dashboard Content -->
+            
             <div class="row g-4">
-                <!-- Bookings List -->
                 <div class="col-lg-8">
                     <div class="dashboard-card animate-on-scroll">
                         <div class="card-header-dash">
@@ -122,21 +112,17 @@
                         </div>
                         <div class="card-body-dash">
                             <div id="bookingsContainer">
-                                <!-- Bookings will be loaded here -->
                                 <div class="text-center py-5">
-                                    <div class="spinner-border text-primary" role="status">
+                                    <div class="spinner-border text-var(--primary-color)" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
-                                    <p class="text-muted mt-3">Loading bookings...</p>
+                                    <p class="text-white mt-3">Loading bookings...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Quick Actions & Profile -->
                 <div class="col-lg-4">
-                    <!-- Profile Card -->
                     <div class="dashboard-card animate-on-scroll mb-4">
                         <div class="card-header-dash">
                             <h2 class="card-title-dash">Profile</h2>
@@ -148,14 +134,12 @@
                                 </div>
                                 <h4 class="profile-name" id="profileName">Loading...</h4>
                                 <p class="profile-email" id="profileEmail">Loading...</p>
-                                <a href="settings.html" class="btn btn-outline-primary btn-sm w-100 mt-3">
+                                <a href="settings.html" class="btn btn-primary btn-sm w-100 mt-3">
                                     <i class="bi bi-pencil me-2"></i>Edit Profile
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Quick Actions -->
                     <div class="dashboard-card animate-on-scroll">
                         <div class="card-header-dash">
                             <h2 class="card-title-dash">Quick Actions</h2>
@@ -183,8 +167,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Upcoming Trips -->
+            
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="dashboard-card animate-on-scroll">
@@ -206,8 +189,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
+    
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
@@ -215,12 +197,9 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap 5 JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/dashboard.js"></script>

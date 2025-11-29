@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php';
 
-// Get bearer token
 $token = getBearerToken();
 
 if (!$token) {
@@ -12,7 +11,6 @@ if (!$token) {
     exit();
 }
 
-// Verify token
 $payload = verifyJWT($token);
 
 if (!$payload) {
@@ -23,7 +21,7 @@ if (!$payload) {
     exit();
 }
 
-// Get user data
+
 $stmt = $conn->prepare("SELECT id, name, email, phone, address, city, country, created_at FROM users WHERE id = ?");
 $stmt->bind_param("i", $payload['user_id']);
 $stmt->execute();

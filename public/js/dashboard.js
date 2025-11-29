@@ -1,7 +1,5 @@
-// Dashboard JavaScript
 const API_URL = "http://localhost/wow-travel/api"
 
-// Declare helper functions
 function getUserData() {
   return JSON.parse(localStorage.getItem("userData"))
 }
@@ -10,43 +8,32 @@ function getAuthToken() {
   return localStorage.getItem("authToken")
 }
 
-// Import axios
 const axios = require("axios")
 
-// Load dashboard data on page load
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("[v0] Dashboard loading...")
-
-  // Check authentication
   const token = getAuthToken()
   if (!token) {
     window.location.href = "login.html"
     return
   }
-
-  // Load user data
+  
   await loadUserData()
-
-  // Load bookings
+  
   await loadBookings()
-
-  // Initialize animations
+  
   initializeScrollAnimations()
 })
 
-// Load user data
 async function loadUserData() {
   try {
     const userData = getUserData()
 
     if (userData) {
-      // Update profile info
       document.getElementById("userName").textContent = userData.name.split(" ")[0]
       document.getElementById("navbarUserName").textContent = userData.name.split(" ")[0]
       document.getElementById("profileName").textContent = userData.name
       document.getElementById("profileEmail").textContent = userData.email
     } else {
-      // Fetch from API
       const token = getAuthToken()
       const response = await axios.get(`${API_URL}/verify.php`, {
         headers: {
@@ -69,7 +56,6 @@ async function loadUserData() {
   }
 }
 
-// Load bookings
 async function loadBookings() {
   try {
     const token = getAuthToken()
@@ -83,14 +69,11 @@ async function loadBookings() {
 
     if (response.data.success) {
       const bookings = response.data.bookings
-
-      // Update stats
+      
       updateStats(bookings)
-
-      // Display bookings
+      
       displayBookings(bookings)
-
-      // Display upcoming trips
+      
       displayUpcomingTrips(bookings)
     } else {
       showEmptyBookings()
@@ -101,21 +84,18 @@ async function loadBookings() {
   }
 }
 
-// Update dashboard stats
 function updateStats(bookings) {
   const total = bookings.length
   const pending = bookings.filter((b) => b.status === "pending").length
   const confirmed = bookings.filter((b) => b.status === "confirmed").length
   const destinations = new Set(bookings.map((b) => b.destination)).size
-
-  // Animate counters
+  
   animateCounter("totalBookings", 0, total, 1000)
   animateCounter("pendingBookings", 0, pending, 1000)
   animateCounter("confirmedBookings", 0, confirmed, 1000)
   animateCounter("destinationsVisited", 0, destinations, 1000)
 }
 
-// Animate counter
 function animateCounter(elementId, start, end, duration) {
   const element = document.getElementById(elementId)
   const range = end - start
@@ -133,7 +113,6 @@ function animateCounter(elementId, start, end, duration) {
   }, 16)
 }
 
-// Display bookings
 function displayBookings(bookings) {
   const container = document.getElementById("bookingsContainer")
 
@@ -148,11 +127,9 @@ function displayBookings(bookings) {
         `
     return
   }
-
-  // Sort by date (most recent first)
+  
   bookings.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-
-  // Show only recent 5 bookings
+  
   const recentBookings = bookings.slice(0, 5)
 
   container.innerHTML = recentBookings
@@ -181,11 +158,9 @@ function displayBookings(bookings) {
     .join("")
 }
 
-// Display upcoming trips
 function displayUpcomingTrips(bookings) {
   const container = document.getElementById("upcomingTripsContainer")
-
-  // Filter confirmed bookings with future departure dates
+  
   const today = new Date()
   const upcomingTrips = bookings
     .filter((booking) => {
@@ -254,7 +229,6 @@ function displayUpcomingTrips(bookings) {
     `
 }
 
-// Show empty bookings state
 function showEmptyBookings() {
   const container = document.getElementById("bookingsContainer")
   container.innerHTML = `
@@ -265,15 +239,13 @@ function showEmptyBookings() {
             <a href="packages.html" class="btn btn-primary mt-3">Browse Packages</a>
         </div>
     `
-
-  // Set all stats to 0
+    
   document.getElementById("totalBookings").textContent = "0"
   document.getElementById("pendingBookings").textContent = "0"
   document.getElementById("confirmedBookings").textContent = "0"
   document.getElementById("destinationsVisited").textContent = "0"
 }
 
-// Helper functions
 function getBookingIcon(type) {
   const icons = {
     flight: "airplane",
@@ -297,7 +269,6 @@ function formatDate(dateString) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
 }
 
-// Initialize scroll animations
 function initializeScrollAnimations() {
   const elements = document.querySelectorAll(".animate-on-scroll")
 

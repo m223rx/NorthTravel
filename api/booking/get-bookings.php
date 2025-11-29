@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php';
 
-// Get bearer token
 $token = getBearerToken();
 
 if (!$token) {
@@ -12,7 +11,6 @@ if (!$token) {
     exit();
 }
 
-// Verify token
 $payload = verifyJWT($token);
 
 if (!$payload) {
@@ -23,7 +21,6 @@ if (!$payload) {
     exit();
 }
 
-// Get user bookings
 $stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $payload['user_id']);
 $stmt->execute();

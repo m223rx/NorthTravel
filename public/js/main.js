@@ -1,4 +1,3 @@
-// Navbar scroll effect
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar")
   if (window.scrollY > 50) {
@@ -8,7 +7,6 @@ window.addEventListener("scroll", () => {
   }
 })
 
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault()
@@ -22,7 +20,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   })
 })
 
-// Form validation
 document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("submit", (e) => {
     if (!form.checkValidity()) {
@@ -33,7 +30,6 @@ document.querySelectorAll("form").forEach((form) => {
   })
 })
 
-// Auto-hide navbar on scroll down, show on scroll up
 let lastScrollTop = 0
 window.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar")
@@ -57,13 +53,11 @@ const animateOnScroll = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible")
-        // Optional: stop observing after animation
         observer.unobserve(entry.target)
       }
     })
   }, observerOptions)
-
-  // Observe all elements with animation classes
+  
   const animatedElements = document.querySelectorAll(
     ".animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-zoom-in, .animate-fade-scale",
   )
