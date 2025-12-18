@@ -1898,6 +1898,71 @@ body {
   color: var(--text-light);
 }
 
-.contact-icon{
+.contact-icon {
   color: var(--primary-color);
+}
+
+.settings-header{
+  margin-top: 80px;
+}
+
+.settings-section{
+  margin-bottom: 80px;
+}
+
+.settings-form-actions{
+  margin-top: 10px;
+}
+
+.settings-sidebar {
+  background: #1a1919;
+  border-radius: 14px;
+  padding: 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-sidebar-header {
+  border-bottom: 1px solid #2a2828;
+  margin-bottom: 1rem;
+  padding-bottom: .75rem;
+}
+
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  color: #9f9f9f;
+  text-decoration: none;
+  transition: all .25s ease;
+}
+
+.settings-nav-item i {
+  font-size: 1.1rem;
+}
+
+.settings-nav-item:hover {
+  background: #211f1f;
+  color: #f2f2f2;
+}
+
+.settings-nav-item.active {
+  background: linear-gradient(135deg, #d4af37, #c49a3f);
+  color: #0f0e0e;
+  font-weight: 500;
+}
+
+.settings-sidebar-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #2a2828;
 }

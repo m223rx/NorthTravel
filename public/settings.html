@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Wow Travel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-text">Wow Travel</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <span id="navbarUserName">Account</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="dashboard.html"><i
+                                        class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i
+                                        class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="settings-section">
+        <div class="container">
+            <div class="settings-header animate-on-scroll">
+                <h1 class="settings-title">Account Settings</h1>
+                <p class="settings-subtitle">Manage your profile, security, and preferences</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <aside class="settings-sidebar animate-on-scroll">
+
+                        <div class="settings-sidebar-header">
+                            <h6 class="text-uppercase text-white mb-3">Account Settings</h6>
+                        </div>
+
+                        <nav class="settings-nav">
+                            <a href="#profile" class="settings-nav-item active" data-section="profile">
+                                <i class="bi bi-person"></i>
+                                <span>Profile</span>
+                            </a>
+
+                            <a href="#security" class="settings-nav-item" data-section="security">
+                                <i class="bi bi-shield-lock"></i>
+                                <span>Security</span>
+                            </a>
+
+                            <a href="#notifications" class="settings-nav-item" data-section="notifications">
+                                <i class="bi bi-bell"></i>
+                                <span>Notifications</span>
+                            </a>
+
+                            <a href="#preferences" class="settings-nav-item" data-section="preferences">
+                                <i class="bi bi-sliders"></i>
+                                <span>Preferences</span>
+                            </a>
+
+                            <a href="#payment" class="settings-nav-item" data-section="payment">
+                                <i class="bi bi-credit-card"></i>
+                                <span>Payment Methods</span>
+                            </a>
+
+                            <a href="#privacy" class="settings-nav-item" data-section="privacy">
+                                <i class="bi bi-eye-slash"></i>
+                                <span>Privacy</span>
+                            </a>
+                        </nav>
+
+                        <div class="settings-sidebar-footer">
+                            <button
+                                class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center"
+                                onclick="confirmDeleteAccount();">
+                                <i class="bi bi-trash me-2"></i>
+                                <span>Delete Account</span>
+                            </button>
+                        </div>
+
+                    </aside>
+                </div>
+
+
+                <div class="col-lg-9">
+                    <div id="settingsAlert" class="alert alert-dismissible fade" role="alert" style="display: none;">
+                        <span id="settingsAlertMessage"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div id="profile" class="settings-panel animate-on-scroll">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Profile Information</h2>
+                            <p class="settings-panel-desc">Update your personal details and profile picture</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <div class="profile-picture-section">
+                                <div class="profile-picture-wrapper">
+                                    <div class="profile-picture" id="profilePicture">
+                                        <i class="bi bi-person-circle"></i>
+                                    </div>
+                                    <div class="profile-picture-overlay"
+                                        onclick="document.getElementById('profilePictureInput').click()">
+                                        <i class="bi bi-camera"></i>
+                                    </div>
+                                    <input type="file" id="profilePictureInput" accept="image/*" hidden>
+                                </div>
+                                <div class="profile-picture-info">
+                                    <h4 id="profileDisplayName">Loading...</h4>
+                                    <p id="profileDisplayEmail">Loading...</p>
+                                    <span class="member-since">Member since <span id="memberSince">-</span></span>
+                                </div>
+                            </div>
+
+                            <form id="profileForm" class="settings-form">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="profileName" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="profileName"
+                                            placeholder="Enter your full name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profileEmail" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="profileEmail"
+                                            placeholder="Enter your email" required>
+                                        <small class="text-muted">We'll send booking confirmations to this email</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profilePhone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="profilePhone"
+                                            placeholder="Enter your phone number">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profileDob" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="profileDob">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="profileAddress" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="profileAddress"
+                                            placeholder="Enter your address">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profileCity" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="profileCity"
+                                            placeholder="Enter your city">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="profileCountry" class="form-label">Country</label>
+                                        <select class="form-select" id="profileCountry">
+                                            <option value="">Select your country</option>
+                                            <option value="US">United States</option>
+                                            <option value="UK">United Kingdom</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="FR">France</option>
+                                            <option value="IT">Italy</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="JP">Japan</option>
+                                            <option value="CN">China</option>
+                                            <option value="IN">India</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="SG">Singapore</option>
+                                            <option value="OTHER">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="profileBio" class="form-label">Bio</label>
+                                        <textarea class="form-control" id="profileBio" rows="3"
+                                            placeholder="Tell us about yourself..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="settings-form-actions">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        onclick="resetProfileForm()">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" id="saveProfileBtn">
+                                        <span id="saveProfileBtnText">Save Changes</span>
+                                        <span class="spinner-border spinner-border-sm ms-2" id="saveProfileBtnSpinner"
+                                            style="display: none;"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="security" class="settings-panel animate-on-scroll" style="display: none;">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Security Settings</h2>
+                            <p class="settings-panel-desc">Manage your password and account security</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <div class="security-section">
+                                <h3 class="security-section-title">Change Password</h3>
+                                <form id="passwordForm" class="settings-form">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <label for="currentPassword" class="form-label">Current Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="currentPassword"
+                                                    placeholder="Enter current password" required>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    onclick="togglePasswordVisibility('currentPassword', this)">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="newPassword" class="form-label">New Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="newPassword"
+                                                    placeholder="Enter new password" required minlength="8">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    onclick="togglePasswordVisibility('newPassword', this)">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                            <div class="password-strength mt-2">
+                                                <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                                            </div>
+                                            <small class="text-muted" id="passwordStrengthText">Minimum 8
+                                                characters</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="confirmNewPassword" class="form-label">Confirm New
+                                                Password</label>
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" id="confirmNewPassword"
+                                                    placeholder="Confirm new password" required>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    onclick="togglePasswordVisibility('confirmNewPassword', this)">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="settings-form-actions">
+                                        <button type="submit" class="btn btn-primary" id="changePasswordBtn">
+                                            <span id="changePasswordBtnText">Update Password</span>
+                                            <span class="spinner-border spinner-border-sm ms-2"
+                                                id="changePasswordBtnSpinner" style="display: none;"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="security-section mt-5">
+                                <h3 class="security-section-title">Two-Factor Authentication</h3>
+                                <div class="two-factor-card">
+                                    <div class="two-factor-info">
+                                        <i class="bi bi-shield-check two-factor-icon"></i>
+                                        <div>
+                                            <h4>Protect your account</h4>
+                                            <p>Add an extra layer of security by enabling two-factor authentication</p>
+                                        </div>
+                                    </div>
+                                    <div class="two-factor-status">
+                                        <span class="status-badge status-pending">Not Enabled</span>
+                                        <button class="btn btn-outline-primary btn-sm" disabled>Enable 2FA</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="security-section mt-5">
+                                <h3 class="security-section-title">Active Sessions</h3>
+                                <div class="sessions-list">
+                                    <div class="session-item">
+                                        <div class="session-icon">
+                                            <i class="bi bi-laptop"></i>
+                                        </div>
+                                        <div class="session-info">
+                                            <h4>Current Session</h4>
+                                            <p>Chrome on Windows</p>
+                                            <span class="session-time">Active now</span>
+                                        </div>
+                                        <span class="status-badge status-confirmed">Current</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-danger mt-3" onclick="logoutAllSessions()">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout All Other Sessions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="notifications" class="settings-panel animate-on-scroll" style="display: none;">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Notification Preferences</h2>
+                            <p class="settings-panel-desc">Choose how you want to be notified</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <div class="notification-group">
+                                <h3 class="notification-group-title">Email Notifications</h3>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Booking Confirmations</h4>
+                                        <p>Receive email confirmations for all your bookings</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="notifyBookings" checked>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Travel Updates</h4>
+                                        <p>Get updates about your upcoming trips</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="notifyUpdates" checked>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Promotional Offers</h4>
+                                        <p>Receive exclusive deals and discounts</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="notifyPromos">
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Newsletter</h4>
+                                        <p>Monthly travel tips and destination guides</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="notifyNewsletter">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="notification-group mt-5">
+                                <h3 class="notification-group-title">Push Notifications</h3>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Price Alerts</h4>
+                                        <p>Get notified when prices drop for saved destinations</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="pushPriceAlerts" checked>
+                                    </div>
+                                </div>
+                                <div class="notification-option">
+                                    <div class="notification-info">
+                                        <h4>Reminders</h4>
+                                        <p>Booking reminders and check-in notifications</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="pushReminders" checked>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-form-actions">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="saveNotificationPreferences()">Save Preferences</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="preferences" class="settings-panel animate-on-scroll" style="display: none;">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Travel Preferences</h2>
+                            <p class="settings-panel-desc">Customize your travel experience</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <form id="preferencesForm" class="settings-form">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="prefCurrency" class="form-label">Preferred Currency</label>
+                                        <select class="form-select" id="prefCurrency">
+                                            <option value="USD">USD - US Dollar</option>
+                                            <option value="EUR">EUR - Euro</option>
+                                            <option value="GBP">GBP - British Pound</option>
+                                            <option value="JPY">JPY - Japanese Yen</option>
+                                            <option value="AUD">AUD - Australian Dollar</option>
+                                            <option value="CAD">CAD - Canadian Dollar</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prefLanguage" class="form-label">Language</label>
+                                        <select class="form-select" id="prefLanguage">
+                                            <option value="en">English</option>
+                                            <option value="es">Spanish</option>
+                                            <option value="fr">French</option>
+                                            <option value="de">German</option>
+                                            <option value="it">Italian</option>
+                                            <option value="ja">Japanese</option>
+                                            <option value="zh">Chinese</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prefClass" class="form-label">Preferred Flight Class</label>
+                                        <select class="form-select" id="prefClass">
+                                            <option value="economy">Economy</option>
+                                            <option value="premium">Premium Economy</option>
+                                            <option value="business">Business</option>
+                                            <option value="first">First Class</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prefSeat" class="form-label">Seat Preference</label>
+                                        <select class="form-select" id="prefSeat">
+                                            <option value="window">Window</option>
+                                            <option value="aisle">Aisle</option>
+                                            <option value="middle">No Preference</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prefMeal" class="form-label">Meal Preference</label>
+                                        <select class="form-select" id="prefMeal">
+                                            <option value="regular">Regular</option>
+                                            <option value="vegetarian">Vegetarian</option>
+                                            <option value="vegan">Vegan</option>
+                                            <option value="halal">Halal</option>
+                                            <option value="kosher">Kosher</option>
+                                            <option value="gluten-free">Gluten Free</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="prefHotel" class="form-label">Hotel Star Rating</label>
+                                        <select class="form-select" id="prefHotel">
+                                            <option value="any">Any</option>
+                                            <option value="3">3 Star & Above</option>
+                                            <option value="4">4 Star & Above</option>
+                                            <option value="5">5 Star Only</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="preferences-section mt-5">
+                                    <h3 class="preferences-section-title">Travel Interests</h3>
+                                    <div class="interests-grid">
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="adventure">
+                                            <span class="interest-label">
+                                                <i class="bi bi-compass"></i>
+                                                Adventure
+                                            </span>
+                                        </label>
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="beach">
+                                            <span class="interest-label">
+                                                <i class="bi bi-sun"></i>
+                                                Beach
+                                            </span>
+                                        </label>
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="culture">
+                                            <span class="interest-label">
+                                                <i class="bi bi-bank"></i>
+                                                Culture
+                                            </span>
+                                        </label>
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="nature">
+                                            <span class="interest-label">
+                                                <i class="bi bi-tree"></i>
+                                                Nature
+                                            </span>
+                                        </label>
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="luxury">
+                                            <span class="interest-label">
+                                                <i class="bi bi-gem"></i>
+                                                Luxury
+                                            </span>
+                                        </label>
+                                        <label class="interest-checkbox">
+                                            <input type="checkbox" name="interests" value="family">
+                                            <span class="interest-label">
+                                                <i class="bi bi-people"></i>
+                                                Family
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="settings-form-actions">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        onclick="resetPreferencesForm()">Reset</button>
+                                    <button type="submit" class="btn btn-primary">Save Preferences</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="payment" class="settings-panel animate-on-scroll" style="display: none;">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Payment Methods</h2>
+                            <p class="settings-panel-desc">Manage your saved payment methods</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <div class="payment-methods-list" id="paymentMethodsList">
+                                <div class="empty-state text-center py-5">
+                                    <i class="bi bi-credit-card empty-icon"></i>
+                                    <h4 class="empty-title">No Payment Methods</h4>
+                                    <p class="empty-text">Add a payment method for faster checkout</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary mt-4" onclick="showAddPaymentModal()">
+                                <i class="bi bi-plus-circle me-2"></i>Add Payment Method
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div id="privacy" class="settings-panel animate-on-scroll" style="display: none;">
+                        <div class="settings-panel-header">
+                            <h2 class="settings-panel-title">Privacy Settings</h2>
+                            <p class="settings-panel-desc">Control your data and privacy</p>
+                        </div>
+                        <div class="settings-panel-body">
+                            <div class="privacy-option">
+                                <div class="privacy-info">
+                                    <h4>Profile Visibility</h4>
+                                    <p>Control who can see your profile information</p>
+                                </div>
+                                <select class="form-select w-auto" id="profileVisibility">
+                                    <option value="private">Private</option>
+                                    <option value="friends">Friends Only</option>
+                                    <option value="public">Public</option>
+                                </select>
+                            </div>
+                            <div class="privacy-option">
+                                <div class="privacy-info">
+                                    <h4>Show Booking History</h4>
+                                    <p>Allow others to see your travel history</p>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="showBookingHistory">
+                                </div>
+                            </div>
+                            <div class="privacy-option">
+                                <div class="privacy-info">
+                                    <h4>Location Sharing</h4>
+                                    <p>Share your location for personalized recommendations</p>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="shareLocation" checked>
+                                </div>
+                            </div>
+                            <div class="privacy-option">
+                                <div class="privacy-info">
+                                    <h4>Analytics & Cookies</h4>
+                                    <p>Help us improve by sharing usage data</p>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="analyticsEnabled" checked>
+                                </div>
+                            </div>
+
+                            <div class="data-actions mt-5">
+                                <h3 class="data-actions-title">Your Data</h3>
+                                <div class="data-action-buttons">
+                                    <button class="btn btn-outline-secondary" onclick="downloadData()">
+                                        <i class="bi bi-download me-2"></i>Download My Data
+                                    </button>
+                                    <button class="btn btn-outline-danger" onclick="confirmDeleteAccount()">
+                                        <i class="bi bi-trash me-2"></i>Delete Account
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="settings-form-actions">
+                                <button type="button" class="btn btn-primary" onclick="savePrivacySettings()">Save
+                                    Privacy Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-danger">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Delete Account
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-light">Are you sure you want to delete your account? This action cannot be undone and
+                        will permanently delete:</p>
+                    <ul class="text-muted">
+                        <li>All your personal information</li>
+                        <li>All booking history</li>
+                        <li>Saved payment methods</li>
+                        <li>Travel preferences</li>
+                    </ul>
+                    <div class="mb-3">
+                        <label for="deleteConfirmPassword" class="form-label text-light">Enter your password to
+                            confirm:</label>
+                        <input type="password" class="form-control" id="deleteConfirmPassword"
+                            placeholder="Enter password">
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wow Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>
